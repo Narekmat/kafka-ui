@@ -1,3 +1,6 @@
 [ {
+  "buildOrder" : 7,
+  "reportUrl" : "https://CronFire.github.io/kafka-ui/allure-results/7/",
+  "reportName" : "Allure Report with history",
   "data" : { }
 } ]
