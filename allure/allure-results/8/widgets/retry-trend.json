@@ -1,9 +1,0 @@
-[ {
-  "buildOrder" : 8,
-  "reportUrl" : "https://CronFire.github.io/kafka-ui/allure-results/8/",
-  "reportName" : "Allure Report with history",
-  "data" : {
-    "run" : 0,
-    "retry" : 0
-  }
-} ]
