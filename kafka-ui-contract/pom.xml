@@ -149,6 +149,7 @@
                                 </goals>
                                 <configuration>
                                     <nodeVersion>${node.version}</nodeVersion>
+                                    <npmVersion>8.5.5</npmVersion>
                                 </configuration>
                             </execution>
                             <execution>
