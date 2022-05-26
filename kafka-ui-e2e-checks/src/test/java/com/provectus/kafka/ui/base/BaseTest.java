@@ -74,7 +74,7 @@ public class BaseTest {
                 .withNetwork(appNetwork)
                     .withCommand(
                             "-conf", "/etc/selenoid/browsers.json", "-log-output-dir", "/opt/selenoid/logs")
-                    .withCommand("docker run --add-host host.docker.internal:host-gateway");
+                    .withCommand("docker run --add-host host.testcontainers.internal:host-gateway");
 
 
 
@@ -109,6 +109,8 @@ public class BaseTest {
             selenoid.withAccessToHost(true);
             selenoid.start();
             Testcontainers.exposeHostPorts(8080);
+            Testcontainers.exposeHostPorts(4444);
+            Testcontainers.exposeHostPorts(selenoid.getMappedPort(4444));
             remote =
                     "http://%s:%s/wd/hub"
                             .formatted(selenoid.getContainerIpAddress(), selenoid.getMappedPort(4444));
