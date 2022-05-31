@@ -28,6 +28,7 @@ import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
 @Configuration
 @AllArgsConstructor
 public class Config {
+
   private final ApplicationContext applicationContext;
 
   private final ServerProperties serverProperties;
@@ -75,9 +76,7 @@ public class Config {
   public WebClient webClient(
       @Value("${webclient.max-in-memory-buffer-size:20MB}") DataSize maxBuffSize) {
     return WebClient.builder()
-        .codecs(c ->
-            c.defaultCodecs()
-                .maxInMemorySize((int) maxBuffSize.toBytes()))
+        .codecs(c -> c.defaultCodecs().maxInMemorySize((int) maxBuffSize.toBytes()))
         .build();
   }
 
