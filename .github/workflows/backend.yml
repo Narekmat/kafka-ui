@@ -8,6 +8,7 @@ on:
     paths:
       - "kafka-ui-api/**"
       - "pom.xml"
+      - ".github/workflows/backend.yml"
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
