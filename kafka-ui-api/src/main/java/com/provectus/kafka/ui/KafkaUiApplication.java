@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class KafkaUiApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(KafkaUiApplication.class, args);
+    SpringApplication
+        .run(KafkaUiApplication.class, args);
   }
 }
