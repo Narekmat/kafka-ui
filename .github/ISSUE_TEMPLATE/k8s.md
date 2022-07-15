@@ -1,9 +1,9 @@
 ---
-name: "\U0001F41E  Bug report"
-about: Create a bug report
+name: "⎈ K8s/Helm problem report"
+about: Report a problem with k8s/helm charts/etc
 title: ''
-labels: status/triage, type/bug
-assignees: ''
+labels: scope/k8s, status/triage
+assignees: azatsafin
 
 ---
 
@@ -31,8 +31,6 @@ We might close the issue without further explanation if you don't provide such i
 
 
 **Steps to Reproduce**
-<!-- We'd like you to provide an example setup (via docker-compose, helm, etc.) 
-to reproduce the problem, especially with a complex setups. -->
 Steps to reproduce the behavior:
 
 1. 
