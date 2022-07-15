@@ -38,9 +38,9 @@ public class QaseExtension implements TestExecutionListener {
     private static final String QASE_PROJECT = "KAFKAUI";
     private static final String QASE_ENABLE = "true";
 
-
-    static {
+    public QaseExtension() {
         String qaseApiToken = System.getProperty("QASEIO_API_TOKEN");
+        log.info("qaseio api token {}", qaseApiToken != null);
 
         if (qaseApiToken == null || StringUtils.isEmpty(qaseApiToken)) {
             throw new RuntimeException("QaseIO API token should be present");
@@ -48,14 +48,13 @@ public class QaseExtension implements TestExecutionListener {
 
         if ("true".equalsIgnoreCase(System.getProperty("QASEIO_CREATE_TESTRUN"))) {
             System.setProperty("QASE_RUN_NAME", "Automation run " +
-                    new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()));
+                new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()));
         }
         System.setProperty("QASE_ENABLE", QASE_ENABLE);
         System.setProperty("QASE_PROJECT_CODE", QASE_PROJECT);
         System.setProperty("QASE_API_TOKEN", qaseApiToken);
         System.setProperty("QASE_USE_BULK", "false");
     }
-
 
     @Override
     public void executionStarted(TestIdentifier testIdentifier) {
