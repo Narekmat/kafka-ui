@@ -18,6 +18,8 @@
         <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
         <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <sonar.language>java</sonar.language>
+        <sonar.projectKey>cronfire</sonar.projectKey>
+        <sonar.organization>provectus</sonar.organization>
     </properties>
 
     <dependencyManagement>
@@ -218,6 +220,11 @@
             <version>${datasketches-java.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacoco.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -331,6 +338,7 @@
                     </execution>
                     <execution>
                         <id>report</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
