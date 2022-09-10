@@ -56,4 +56,4 @@ jobs:
           mvn versions:set -DnewVersion=$GITHUB_SHA
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=com.provectus:kafka-ui_backend \
-          -Dsonar.coverage.jacoco.xmlReportPaths=../kafka-ui-api/target/site/jacoco/jacoco.xml
+          -Dsonar.coverage.jacoco.xmlReportPaths=kafka-ui-api/target/site/jacoco-aggregate/jacoco.xml
