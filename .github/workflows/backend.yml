@@ -49,8 +49,6 @@ jobs:
           -Dsonar.pullrequest.base=$BASE_REF
       - name: Build and analyze push master
         if: ${{ github.event_name == 'push' }}
-        with:
-          projectBaseDir: ./kafka-ui-api
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
@@ -58,3 +56,5 @@ jobs:
           mvn versions:set -DnewVersion=$GITHUB_SHA
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=com.provectus:kafka-ui_backend
+        with:
+          projectBaseDir: ./kafka-ui-api
