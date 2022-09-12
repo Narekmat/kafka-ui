@@ -56,6 +56,4 @@ jobs:
           mvn versions:set -DnewVersion=$GITHUB_SHA
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=CronFire_kafka-ui
-      - name: Debugging with ssh
-        uses: lhotari/action-upterm@v1
           

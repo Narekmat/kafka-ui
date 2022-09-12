@@ -45,7 +45,6 @@
 
         <frontend-generated-sources-directory>..//kafka-ui-react-app/src/generated-sources
         </frontend-generated-sources-directory>
-<!--        <backend-generated-jacoco>..//target/site/jacoco</backend-generated-jacoco>-->
         <sonar.coverage.jacoco.xmlReportPaths>${basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <sonar.organization>cronfire</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
