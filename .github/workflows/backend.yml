@@ -55,7 +55,7 @@ jobs:
         run: |
           mvn versions:set -DnewVersion=$GITHUB_SHA
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.projectKey=com.provectus:kafka-ui_backend
+          -Dsonar.projectKey=com.provectus:cronfire
       - name: Debugging with ssh
         uses: lhotari/action-upterm@v1
           
