@@ -47,6 +47,8 @@ jobs:
           -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
           -Dsonar.pullrequest.branch=$HEAD_REF \
           -Dsonar.pullrequest.base=$BASE_REF
+      - name: Debugging with ssh
+        uses: lhotari/action-upterm@v1
       - name: Build and analyze push master
         if: ${{ github.event_name == 'push' }}
         env:
