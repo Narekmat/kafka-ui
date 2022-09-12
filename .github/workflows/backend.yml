@@ -47,8 +47,6 @@ jobs:
           -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
           -Dsonar.pullrequest.branch=$HEAD_REF \
           -Dsonar.pullrequest.base=$BASE_REF
-      - name: Debugging with ssh
-        uses: lhotari/action-upterm@v1
       - name: Build and analyze push master
         if: ${{ github.event_name == 'push' }}
         env:
@@ -59,4 +57,6 @@ jobs:
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=com.provectus:kafka-ui_backend \
           -Dsonar.coverage.jacoco.xmlReportPaths=jacocoReport/site/jacoco/jacoco.xml
+      - name: Debugging with ssh
+        uses: lhotari/action-upterm@v1  
           
