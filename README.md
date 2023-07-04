@@ -1,4 +1,4 @@
-![UI for Apache Kafka logo](documentation/images/kafka-ui-logo.png) UI for Apache Kafka&nbsp;
+![UI for Apache Kafka logo](documentation/images/kafka-ui-logo.png) UI for Apache Kafka&nbsp; 
 ------------------
 #### Versatile, fast and lightweight web UI for managing Apache Kafka® clusters. Built by developers, for developers.
 <br/>
