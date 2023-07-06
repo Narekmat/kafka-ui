@@ -10,8 +10,8 @@ on:
       - "pom.xml"
 jobs:
   build-and-test:
-    environment: fork
     runs-on: ubuntu-latest
+    environment: fork
     steps:
       - uses: actions/checkout@v3
         with:
