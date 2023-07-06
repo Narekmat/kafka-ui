@@ -3,13 +3,14 @@ on:
   push:
     branches:
       - master
-  pull_request_target:
+  pull_request:
     types: ["opened", "edited", "reopened", "synchronize"]
     paths:
       - "kafka-ui-api/**"
       - "pom.xml"
 jobs:
   build-and-test:
+    environment: fork
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
