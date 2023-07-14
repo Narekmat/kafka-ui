@@ -77,7 +77,7 @@ jobs:
       #    SOURCE_DIR: 'README.md'
       - name: Copy files to the test website with the AWS CLI
         run: |
-          aws s3 sync README.md s3://oidc-test-kafka
+          aws s3 cp README.md s3://oidc-test-kafka
      ## - name: Deploy report to Amazon S3
      ##   if: always()
      ##   uses: Sibz/github-status-action@v1.1.6
