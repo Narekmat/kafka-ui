@@ -21,12 +21,12 @@ jobs:
       #    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       #    aws-region: eu-central-1
-      #- name: configure aws credentials
-      #  uses: aws-actions/configure-aws-credentials@v1.7.0
-      #  with:
-      #    role-to-assume: arn:aws:iam::297478128798:oidc-provider/token.actions.githubusercontent.com #change to reflect your IAM role’s ARN
-      #    role-session-name: GitHub_to_AWS_via_FederatedOIDC
-      #    aws-region: ${{ env.AWS_REGION }}
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1.7.0
+        with:
+          role-to-assume: arn:aws:iam::297478128798:oidc-provider/token.actions.githubusercontent.com #change to reflect your IAM role’s ARN
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: ${{ env.AWS_REGION }}
      ## - name: Set up environment
      ##   id: set_env_values
      ##   run: |
@@ -66,12 +66,12 @@ jobs:
      ##     allure_report: allure-report
      ##     subfolder: allure-results
      ##     report_url: "http://kafkaui-allure-reports.s3-website.eu-central-1.amazonaws.com"
-      - uses: jakejarvis/s3-sync-action@master
-        if: always()
-        env:
-          AWS_S3_BUCKET: 'oidc-test-kafka'
-          AWS_REGION: 'eu-central-1'
-          SOURCE_DIR: 'README.md'
+      #- uses: jakejarvis/s3-sync-action@master
+      #  if: always()
+      #  env:
+      #    AWS_S3_BUCKET: 'oidc-test-kafka'
+      #    AWS_REGION: 'eu-central-1'
+      #    SOURCE_DIR: 'README.md'
      ## - name: Deploy report to Amazon S3
      ##   if: always()
      ##   uses: Sibz/github-status-action@v1.1.6
