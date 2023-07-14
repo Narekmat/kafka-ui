@@ -69,12 +69,12 @@ jobs:
      ##     allure_report: allure-report
      ##     subfolder: allure-results
      ##     report_url: "http://kafkaui-allure-reports.s3-website.eu-central-1.amazonaws.com"
-      #- uses: jakejarvis/s3-sync-action@master
-      #  if: always()
-      #  env:
-      #    AWS_S3_BUCKET: 'oidc-test-kafka'
-      #    AWS_REGION: 'eu-central-1'
-      #    SOURCE_DIR: 'README.md'
+      - uses: jakejarvis/s3-sync-action@master
+        if: always()
+        env:
+          AWS_S3_BUCKET: 'oidc-test-kafka'
+          AWS_REGION: 'eu-central-1'
+          SOURCE_DIR: 'README.md'
      ## - name: Deploy report to Amazon S3
      ##   if: always()
      ##   uses: Sibz/github-status-action@v1.1.6
