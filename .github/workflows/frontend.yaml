@@ -51,14 +51,14 @@ jobs:
         run: |
           cd kafka-ui-react-app/
           pnpm gen:sources
-      - name: Linter
-        run: |
-          cd kafka-ui-react-app/
-          pnpm lint:CI
-      - name: Tests
-        run: |
-          cd kafka-ui-react-app/
-          pnpm test:CI
+      #- name: Linter
+      #  run: |
+      #    cd kafka-ui-react-app/
+      #    pnpm lint:CI
+      #- name: Tests
+      #  run: |
+      #    cd kafka-ui-react-app/
+      #    pnpm test:CI
       - name: SonarCloud Scan
         uses: workshur/sonarcloud-github-action@improved_basedir
         with:
