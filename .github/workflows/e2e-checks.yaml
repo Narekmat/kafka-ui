@@ -1,5 +1,28 @@
 name: "E2E: PR healthcheck"
-on: workflow_dispatch
+on:
+  pull_request_target:
+    types: [ "opened", "edited", "reopened", "synchronize" ]
+    paths:
+      - "kafka-ui-api/**"
+      - "kafka-ui-contract/**"
+      - "kafka-ui-react-app/**"
+      - "kafka-ui-e2e-checks/**"
+      - "pom.xml"
+permissions:
+  ##actions: read|write|none
+  ##checks: read|write|none
+  ##contents: read|write|none
+  ##deployments: read|write|none
+  ##id-token: read|write|none
+  ##issues: read|write|none
+  ##discussions: read|write|none
+  ##packages: read|write|none
+  ##pages: read|write|none
+  pull-requests: write
+  ##repository-projects: read|write|none
+  ##security-events: read|write|none
+  ##statuses: read|write|none            
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -7,12 +30,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.S3_AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
+      #- name: Configure AWS credentials
+      #  uses: aws-actions/configure-aws-credentials@v2
+      #  with:
+      #    aws-access-key-id: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
+      #    aws-secret-access-key: ${{ secrets.S3_AWS_SECRET_ACCESS_KEY }}
+      #    aws-region: eu-central-1
       ##- name: Set up environment
       ##  id: set_env_values
       ##  run: |
@@ -52,21 +75,21 @@ jobs:
       ##    allure_report: allure-report
       ##    subfolder: allure-results
       ##    report_url: "http://kafkaui-allure-reports.s3-website.eu-central-1.amazonaws.com"
-      - uses: jakejarvis/s3-sync-action@master
+      #- uses: jakejarvis/s3-sync-action@master
+      #  if: always()
+      #  env:
+      #    AWS_S3_BUCKET: 'oidc-test-kafka'
+      #    AWS_REGION: 'eu-central-1'
+      #    SOURCE_DIR: 'documentation'
+      - name: Deploy report to Amazon S3
         if: always()
-        env:
-          AWS_S3_BUCKET: 'oidc-test-kafka'
-          AWS_REGION: 'eu-central-1'
-          SOURCE_DIR: 'documentation'
-      ##- name: Deploy report to Amazon S3
-      ##  if: always()
-      ##  uses: Sibz/github-status-action@v1.1.6
-      ##  with:
-      ##    authToken: ${{secrets.GITHUB_TOKEN}}
-      ##    context: "Click Details button to open Allure report"
-      ##    state: "success"
-      ##    sha: ${{ github.event.pull_request.head.sha  || github.sha }}
-      ##    target_url: http://kafkaui-allure-reports.s3-website.eu-central-1.amazonaws.com/${{ github.run_number }}
+        uses: Sibz/github-status-action@v1.1.6
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          context: "Click Details button to open Allure report"
+          state: "success"
+          sha: ${{ github.event.pull_request.head.sha  || github.sha }}
+          target_url: http://kafkaui-allure-reports.s3-website.eu-central-1.amazonaws.com/${{ github.run_number }}
       ##- name: Dump docker logs on failure
       ##  if: failure()
       ##  uses: jwalton/gh-docker-logs@v2.2.1
