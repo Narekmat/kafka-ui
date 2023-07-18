@@ -10,9 +10,9 @@ on:
       - "pom.xml"
 permissions:
   ##actions: read|write|none
-  actions: write
-  checks: write
-  contents: write
+  #actions: write
+  #checks: write
+  #contents: write
   deployments: write
   id-token: write
   issues: write
