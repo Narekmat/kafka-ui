@@ -19,7 +19,7 @@ permissions:
   ##packages: read|write|none
   ##pages: read|write|none
   pull-requests: write
-  repository-projects: read
+  repository-projects: write
   ##security-events: read|write|none
   ##statuses: read|write|none      
 jobs:
