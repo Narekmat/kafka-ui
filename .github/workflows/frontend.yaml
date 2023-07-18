@@ -8,9 +8,9 @@ on:
     paths:
       - "kafka-ui-contract/**"
       - "kafka-ui-react-app/**"
-#permissions:
+###permissions:
   ##actions: read|write|none
-  ##checks: read|write|none
+  ##checks: write
  # contents: write
   ##deployments: read|write|none
   ##id-token: read|write|none
