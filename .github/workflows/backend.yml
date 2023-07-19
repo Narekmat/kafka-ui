@@ -28,20 +28,20 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      - name: Build and analyze pull request target
-        if: ${{ github.event_name == 'pull_request_target' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
-          HEAD_REF: ${{ github.head_ref }}
-          BASE_REF: ${{ github.base_ref }}
-        run: |
-          ./mvnw -B -ntp versions:set -DnewVersion=${{ github.event.pull_request.head.sha }}
-          ./mvnw -B -V -ntp verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.projectKey=CronFire_kafka-ui \
-          -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
-          -Dsonar.pullrequest.branch=$HEAD_REF \
-          -Dsonar.pullrequest.base=$BASE_REF
+     # - name: Build and analyze pull request target
+     #   if: ${{ github.event_name == 'pull_request_target' }}
+     #   env:
+     #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
+     #     HEAD_REF: ${{ github.head_ref }}
+     #     BASE_REF: ${{ github.base_ref }}
+     #   run: |
+     #     ./mvnw -B -ntp versions:set -DnewVersion=${{ github.event.pull_request.head.sha }}
+     #     ./mvnw -B -V -ntp verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+     #     -Dsonar.projectKey=CronFire_kafka-ui \
+     #     -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
+     #     -Dsonar.pullrequest.branch=$HEAD_REF \
+     #     -Dsonar.pullrequest.base=$BASE_REF
       - name: Build and analyze push master
         if: ${{ github.event_name == 'push' }}
         env:
